@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Support\Carbon;
@@ -16,28 +17,29 @@ class ForgotPasswordController extends Controller
 {
     public function submitForgetPasswordForm(Request $request)
     {
-        $request->validate([
-            'email' => 'required|email|exists:users',
-        ]);
+        try{
+            $request->validate([
+                'email' => 'required|email|exists:users',
+            ]);
 
-        $token = Str::random(64);
+            $token = Str::random(64);
 
-        DB::table('password_resets')->insert([
-            'email' => $request->email,
-            'token' => $token,
-            'created_at' => Carbon::now()
-        ]);
+            DB::table('password_resets')->insert([
+                'email' => $request->email,
+                'token' => $token,
+                'created_at' => Carbon::now()
+            ]);
 
-        Mail::send('email.forgetPassword', ['token' => $token], function($message) use($request){
-            $message->to($request->email);
-            $message->subject('Resetování hesla');
-        });
+            Mail::send('email.forgetPassword', ['token' => $token], function($message) use($request){
+                $message->to($request->email);
+                $message->subject('Resetování hesla');
+            });
 
-        return $this->handleSuccess([], "forgoten_password_send");
-    }
-
-    public function showResetPasswordForm($token) {
-        return view('auth.forgetPasswordLink', ['token' => $token]);
+            return $this->handleSuccess([], "forgoten_password_send");
+        }catch(Exception $exception)
+        {
+            return $this->handleFailed("not_email_exists");
+        }
     }
 
     public function submitResetPasswordForm(Request $request)

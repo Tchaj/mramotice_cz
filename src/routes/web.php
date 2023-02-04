@@ -17,7 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::group(["prefix" => "admin"], function () {
+    Route::get("/", function () {
+        return redirect("/admin/login");
+    });
+    Route::get('{any}', function () {
+        return view('admin');
+    })->where('any', '.*');
+});
 // Reset password
-Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
-Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+

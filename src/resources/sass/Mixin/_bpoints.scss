@@ -1,0 +1,43 @@
+// BreakPoints
+$small-device:320px;
+$medium-device:768px;
+$larger-device: 992px;
+$xlarge-device: 1200px;
+
+@mixin sm{
+    @media only screen
+    and (min-width: $small-device){
+        @content;
+    }
+}
+
+@mixin md{
+    @media screen and (min-width: $medium-device){
+        @content;
+    }
+}
+
+@mixin lg{
+    @media screen and (min-width: $larger-device){
+        @content;
+    }
+}
+
+@mixin xl{
+    @media screen and (min-width:$xlarge-device) {
+        @content;
+    }
+}
+
+@mixin sm-fix{
+    @media screen and (min-width: 580px){
+        @content;
+    }
+
+}
+@mixin sm-fix-500{
+    @media screen and (min-width: 580px){
+        @content;
+    }
+
+}

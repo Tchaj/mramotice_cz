@@ -1,0 +1,18 @@
+.users-top-wrapper {
+    display: flex;
+    position: relative;
+    .top-col {
+        img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border: 1px solid $shop_primary;
+            border-radius: 2px;
+        }
+    }
+}
+
+.text--primary-color {
+    color: $shop_primary;
+    font-size: 18px;
+}

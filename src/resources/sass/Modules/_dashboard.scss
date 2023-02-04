@@ -1,0 +1,64 @@
+/** dashboard view **/
+
+.dashboard-wrapper {
+    margin-top: 30px;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    color: white;
+    font-weight: 600;
+    flex-direction: column;
+    @include md() {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .dashboard-count-col {
+        width: 100%;
+        min-height: 100px;
+        height: 150px;
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        @include md() {
+            min-height: 100px;
+            height: 150px;
+            width: 46%;
+        }
+        .count-inner-row {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            .count-inner-col {
+            }
+        }
+    }
+    .dashboard-stat-col {
+        width: 100%;
+        min-height: 100px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        // justify-content: space-between;
+        @include md() {
+            min-height: 100px;
+            height: 150px;
+            width: 46%;
+        }
+    }
+}
+
+.count-progress-outer {
+    width: 100%;
+    height: 16px;
+    background: #ffffff99;
+    position: relative;
+    .count-progress-inner {
+        background: white;
+        z-index: 14;
+        height: 100%;
+        width: 0%;
+    }
+}

@@ -1,0 +1,113 @@
+@import "../variables";
+
+.v-navigation-drawer__content {
+    background: white;
+}
+
+.v-application--wrap {
+    aside {
+        z-index: 99 !important;
+    }
+}
+.v-application.secondary {
+    background-color: white !important;
+    border-color: #424242 !important;
+}
+
+.v-list-item--active.v-list-item.v-list-item--link.theme--light {
+    color: $shop_primary !important;
+}
+
+.theme--light.v-list-item--active:hover::before,
+.theme--light.v-list-item--active::before {
+    opacity: 0.42;
+}
+
+.v-btn {
+    height: 40px !important;
+    padding: 0 16px !important;
+    border-radius: 2px !important;
+    text-transform: none !important;
+    box-shadow: none !important;
+}
+
+.v-btn.v-size--small {
+    height: 25px !important;
+}
+.v-btn.primary {
+    background: $shop_primary;
+}
+
+.navigation-bottom-part {
+    text-align: center;
+    padding: 30px 0;
+    margin: 0 15px;
+}
+
+.v-data-table__wrapper {
+    table {
+        border-collapse: separate;
+        border-spacing: 0 10px !important;
+    }
+    td,
+    th {
+        padding: 5px;
+    }
+    tr {
+        background: #f8f8f8;
+    }
+    td {
+        border-bottom: none !important;
+    }
+}
+
+.v-data-table-header {
+    tr {
+        background: $shop_secondary !important;
+    }
+    th {
+        color: white !important;
+        text-transform: uppercase;
+        // font-size:14px !important;
+    }
+}
+
+.v-data-footer {
+    border-top: none !important;
+}
+
+.v-navigation-drawer__content {
+    .v-list {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .v-list-item:first-child {
+            flex: 2;
+            @include md() {
+                flex: 2;
+            }
+        }
+        .v-list-item:not(:last-child):not(:first-child) {
+            flex: 1;
+        }
+        .v-list-item:last-child {
+            flex: 10;
+            display: flex;
+            > .v-list-item__action {
+                white-space: nowrap;
+                opacity: 1;
+                transition: opacity 0.4s ease;
+                align-self: flex-end;
+            }
+            .v-list-item__action.hidden_copy {
+                opacity: 0;
+            }
+        }
+    }
+}
+
+
+.custom-select {
+
+}
